@@ -4,11 +4,14 @@ import TodoList from "./TodoList";
 import { v4 as UUID } from "uuid";
 
 function TodoApp() {
-  const initalTodos = [
-    { id: UUID(), task: "empty bins", completed: true },
-    { id: UUID(), task: "pack car", completed: false },
-    { id: UUID(), task: "buy food", completed: false },
-  ];
+  interface ITodo {
+    id: string;
+    task: string;
+    completed: boolean;
+  }
+
+  const initalTodos: ITodo[] = [];
+
   const [todos, setTodos] = useState(initalTodos);
   const addTodo = (newTodoText: string) => {
     setTodos([...todos, { id: UUID(), task: newTodoText, completed: false }]);
